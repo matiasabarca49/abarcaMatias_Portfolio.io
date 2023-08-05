@@ -70,6 +70,7 @@ const prevAndNextImg = (project, way) =>{
     const imgs = project.img
     const elementIMG = document.getElementById(`img${project.id}`)
     const bg = document.getElementById(`bg-${project.id}`)
+    //Cambiar por  slice(3,7)
     const currentImg = `./${elementIMG.src.split("/").slice(4,8).join("/")}`
     let indexImgCurrent = imgs.indexOf(currentImg)
     if (way === "next"){
