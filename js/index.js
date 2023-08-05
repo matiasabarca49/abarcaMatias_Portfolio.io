@@ -21,10 +21,8 @@ const render = (projects) =>{
                                     <div class="contentProject__resume">
                                         <h3>${project.name}</h3>
                                         <p>${project.descripcion}</p>
-                                        <div>
+                                        <div id=${`tecno${project.id}`}>
                                             <h4>Tecnologías</h4>
-                                            <img src="/img/html-5.png" alt="logo html-5">
-                                            <img src="/img/css-3.png" alt="logo css3">
                                         </div>
                                         <div id=${`access${project.id}`}> 
                                             <a class="btn" href=${project.repositorio}> Ver Repositorio </a>
@@ -38,6 +36,17 @@ const render = (projects) =>{
                                 </div>
                                 `
         cont.appendChild(contProject)
+        //Renderizacion de Tecnologías
+        const tecnoCont = document.getElementById(`tecno${project.id}`)
+        project.tecnologias.forEach(  tec => {
+            console.log(tec)
+            const img = document.createElement('img')
+            img.style= "margin-right: 0.5rem"
+            img.src = tec
+            tecnoCont.appendChild(img)
+
+        }  )
+        //Colocar acceso a página en caso de que tenga
         if(project.page){
             const a = document.createElement('a')
             a.innerText= "Ver página"
@@ -48,6 +57,7 @@ const render = (projects) =>{
             console.log(contAccess)
             contAccess.appendChild(a)
         }
+        //Eventos para cambiar imagines
         const next = document.getElementById(`next${project.id}`)
         next.addEventListener('click', ()=>{
           prevAndNextImg(project, "next")  
