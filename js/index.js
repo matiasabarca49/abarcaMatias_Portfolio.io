@@ -29,9 +29,9 @@ const render = (projects) =>{
                                         </div>
                                     </div>
                                     <div class="contentProject__images">
-                                        <button style="transform: rotate(180deg)" id=${`prev${project.id}`}><img src="/img/arrow-right.png "></button>
+                                        <button style="transform: rotate(180deg)" id=${`prev${project.id}`}><img src="./img/arrow-right.png "></button>
                                         <img src=${project.img[0]} alt="image project" id=${`img${project.id}`}>
-                                        <button id=${`next${project.id}`}><img src="/img/arrow-right.png "></button>
+                                        <button id=${`next${project.id}`}><img src="./img/arrow-right.png "></button>
                                     </div>
                                 </div>
                                 `
@@ -39,7 +39,6 @@ const render = (projects) =>{
         //Renderizacion de Tecnologías
         const tecnoCont = document.getElementById(`tecno${project.id}`)
         project.tecnologias.forEach(  tec => {
-            console.log(tec)
             const img = document.createElement('img')
             img.style= "margin-right: 0.5rem"
             img.src = tec
@@ -52,9 +51,7 @@ const render = (projects) =>{
             a.innerText= "Ver página"
             a.classList="btn"
             a.href= project.page
-            console.log(a)
             const contAccess = document.getElementById(`access${project.id}`)
-            console.log(contAccess)
             contAccess.appendChild(a)
         }
         //Eventos para cambiar imagines
@@ -73,9 +70,8 @@ const prevAndNextImg = (project, way) =>{
     const imgs = project.img
     const elementIMG = document.getElementById(`img${project.id}`)
     const bg = document.getElementById(`bg-${project.id}`)
-    const currentImg = `/${elementIMG.src.split("/").slice(3,7).join("/")}`
+    const currentImg = `./${elementIMG.src.split("/").slice(3,7).join("/")}`
     let indexImgCurrent = imgs.indexOf(currentImg)
-    console.log(indexImgCurrent)
     if (way === "next"){
         indexImgCurrent = indexImgCurrent++ === imgs.length-1 ?   0  : indexImgCurrent++
         elementIMG.src = imgs[indexImgCurrent]
@@ -91,9 +87,8 @@ const prevAndNextImg = (project, way) =>{
 
 //Algoritmo Principal
 
-fetch("/data/projects.json")
+fetch("./data/projects.json")
     .then(res => res.json())
     .then( data => {
-        console.log(data)
         render(data)
     } )
