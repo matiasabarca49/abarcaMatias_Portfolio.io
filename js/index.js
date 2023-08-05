@@ -70,7 +70,7 @@ const prevAndNextImg = (project, way) =>{
     const imgs = project.img
     const elementIMG = document.getElementById(`img${project.id}`)
     const bg = document.getElementById(`bg-${project.id}`)
-    const currentImg = `./${elementIMG.src.split("/").slice(3,7).join("/")}`
+    const currentImg = `./${elementIMG.src.split("/").slice(4,8).join("/")}`
     let indexImgCurrent = imgs.indexOf(currentImg)
     if (way === "next"){
         indexImgCurrent = indexImgCurrent++ === imgs.length-1 ?   0  : indexImgCurrent++
