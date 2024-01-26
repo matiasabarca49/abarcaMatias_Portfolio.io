@@ -10,32 +10,36 @@ body {
 }
 
 .header_social {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background-color: #000;
   width: 100%;
   padding: 0.5rem;
 }
-.header_social div {
+.header_social .header_social_bg {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header_social .header_social_bg div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.header_social div:hover {
+.header_social .header_social_bg div:hover {
   transform: scale(110%);
 }
-.header_social div a {
+.header_social .header_social_bg div a {
   color: #fff;
   text-decoration: none;
 }
-.header_social div a:link {
+.header_social .header_social_bg div a:link {
   color: #fff;
 }
-.header_social div a:hover {
+.header_social .header_social_bg div a:hover {
   transform: scale(110%);
 }
-.header_social div img {
+.header_social .header_social_bg div img {
   width: 15px;
   filter: invert(100%);
 }
@@ -53,10 +57,12 @@ body {
 }
 .acercaDe__portada h1 {
   font-size: 4rem;
+  color: #333333;
 }
 .acercaDe__portada h4 {
   opacity: 0.7;
   font-weight: 400;
+  color: #393939;
 }
 .acercaDe__resume {
   position: relative;
@@ -67,6 +73,8 @@ body {
   border-radius: 40px;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   z-index: 996;
+  max-width: 1200px;
+  color: #393939;
 }
 
 .separator {
@@ -78,11 +86,12 @@ body {
   background-color: #fff;
   position: relative;
   z-index: 995;
+  color: #393939;
 }
 .separator div {
   flex-grow: 1;
   height: 2px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #333333;
 }
 
 .btn {
@@ -92,8 +101,8 @@ body {
   border-radius: 20px;
   text-decoration: none;
   padding: 0.5rem;
-  margin-right: 1rem;
-  width: 15vw;
+  /* margin-right: 1rem; */
+  width: 8.3rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
   transition: all 0.3s;
 }
@@ -104,6 +113,7 @@ body {
 .main h2 {
   text-align: center;
   font-size: 4rem;
+  color: #333333;
 }
 .main__fullstack h2 {
   text-align: center;
@@ -116,7 +126,7 @@ body {
 .main__fullstack .main__fullstackProjects .contentProject {
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 0px 50px 30px black;
+  box-shadow: 0px -10px 80px black;
   z-index: 990;
 }
 .main__fullstack .main__fullstackProjects .contentProject .bg-img {
@@ -127,59 +137,64 @@ body {
   object-fit: contain;
 }
 .main__fullstack .main__fullstackProjects .contentProject .bg {
-  display: flex;
-  align-items: center;
   background-image: linear-gradient(rgba(5, 7, 12, 0.8), rgba(5, 7, 12, 0.8));
+  /* box-shadow: 0px 0px 5px 5px white; */
   color: #fff;
   position: relative;
   z-index: 990;
   padding: 4rem 4rem;
-  /* box-shadow: 0px 0px 5px 5px white; */
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth {
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume {
   width: 40%;
   margin: 0 auto;
   text-align: center;
   color: #fff;
   z-index: 995;
+  max-width: 1200px;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume h3 {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume h3 {
   margin: 1rem 0;
   font-size: 3rem;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume p {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume p {
   width: 75%;
   margin: 0 auto;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume div {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume div {
   margin: 1rem 0;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume div h4 {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume div h4 {
   margin: 0.5rem 0;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume div img {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume div img {
   width: 50px;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images {
   display: flex;
   align-items: center;
   gap: 1rem;
   width: 60%;
   padding: 2rem;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images button {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images button {
   background-color: transparent;
   border: none;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images button img {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images button img {
   width: 40px;
   filter: invert(100%);
   cursor: pointer;
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images button img:hover {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images button img:hover {
   transform: scale(110%);
 }
-.main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images img {
+.main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images img {
   width: 95%;
   /* box-shadow: 0 1rem 3rem rgba(black, .50); */
 }
@@ -209,19 +224,21 @@ body {
     height: 100%;
   }
   .main .main__fullstack .main__fullstackProjects .contentProject .bg {
-    flex-direction: column;
     padding: 4rem 0;
   }
-  .main .main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__resume {
+  .main .main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth {
+    flex-direction: column;
+  }
+  .main .main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume {
     width: 100%;
   }
-  .main .main__fullstack .main__fullstackProjects .contentProject .bg .contentProject__images {
+  .main .main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__images {
     justify-content: center;
     width: 70%;
     padding: 2rem 0;
   }
   .btn {
-    width: 150px;
+    width: 8.3rem;
   }
 }
 

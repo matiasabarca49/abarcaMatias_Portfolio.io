@@ -18,7 +18,8 @@ const render = (projects) =>{
                                 `
                                 <img class="bg-img" src=${project.background} alt="${project.id}" id=${`bg-${project.id}`}>
                                 <div class="bg" >
-                                    <div class="contentProject__resume">
+                                    <div class="backgroundWidth">
+                                        <div class="contentProject__resume">
                                         <h3>${project.name}</h3>
                                         <p>${project.descripcion}</p>
                                         <div id=${`tecno${project.id}`}>
@@ -27,12 +28,14 @@ const render = (projects) =>{
                                         <div id=${`access${project.id}`}> 
                                             <a class="btn" href=${project.repositorio}> Ver Repositorio </a>
                                         </div>
-                                    </div>
-                                    <div class="contentProject__images">
-                                        <button style="transform: rotate(180deg)" id=${`prev${project.id}`}><img src="./img/arrow-right.png "></button>
-                                        <img src=${project.img[0]} alt="image project" id=${`img${project.id}`}>
-                                        <button id=${`next${project.id}`}><img src="./img/arrow-right.png "></button>
-                                    </div>
+                                        </div>
+                                        <div class="contentProject__images">
+                                            <button style="transform: rotate(180deg)" id=${`prev${project.id}`}><img src="./img/arrow-right.png "></button>
+                                            <img src=${project.img[0]} alt="image project" id=${`img${project.id}`}>
+                                            <button id=${`next${project.id}`}><img src="./img/arrow-right.png "></button>
+                                        </div>
+                                     </div>
+                                    
                                 </div>
                                 `
         cont.appendChild(contProject)

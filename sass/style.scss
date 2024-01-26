@@ -11,33 +11,37 @@ body{
 }
 
 .header_social{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     background-color: #000;
     width: 100%;
     padding: 0.5rem;
-    div{
+    .header_social_bg{
         display: flex;
+        justify-content: space-around;
         align-items: center;
-        gap: 0.5rem;
-        &:hover{
-            transform: scale(110%);
-        }
-        a{
-            color: #fff;
-            text-decoration: none;
-            
-            &:link{
-                color: #fff;
-            }
+        max-width: 1200px;
+        margin: 0 auto;
+        div{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             &:hover{
                 transform: scale(110%);
             }
-        }
-        img{
-            width: 15px;
-            filter: invert(100%);
+            a{
+                color: #fff;
+                text-decoration: none;
+                
+                &:link{
+                    color: #fff;
+                }
+                &:hover{
+                    transform: scale(110%);
+                }
+            }
+            img{
+                width: 15px;
+                filter: invert(100%);
+            }
         }
     }
 }
@@ -53,10 +57,12 @@ body{
         text-align: center;
         h1{
             font-size: 4rem;
+            color: #333333;
         }
         h4{
             opacity: 0.7;
             font-weight: 400;
+            color: #393939;
         }
     }
     &__resume{
@@ -68,6 +74,8 @@ body{
         border-radius: 40px;
         box-shadow: 0 1rem 3rem rgba(black, .175);
         z-index: 996;
+        max-width: 1200px;
+        color: #393939;
     }
 }
 
@@ -80,10 +88,11 @@ body{
     background-color: #fff;
     position: relative;
     z-index: 995;
+    color: #393939;
     div{
         flex-grow: 1;
         height: 2px;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #333333;
     }
 }
 
@@ -94,8 +103,8 @@ body{
     border-radius: 20px;
     text-decoration: none;
     padding: 0.5rem;
-    margin-right: 1rem;
-    width: 15vw;
+    /* margin-right: 1rem; */
+    width: 8.3rem;
     box-shadow: 0 1rem 3rem rgba(black, 0.5);
     transition: all 0.3s;
     &:hover{
@@ -107,6 +116,7 @@ body{
     h2{
         text-align: center;
         font-size: 4rem;
+        color: #333333;
     }
     &__fullstack{
         h2{
@@ -121,7 +131,7 @@ body{
             .contentProject{
                 position: relative;
                 overflow: hidden;
-                box-shadow: 0px 0px 50px 30px black;
+                box-shadow: 0px -10px 80px black;
                 z-index: 990;
                 .bg-img{
                     position: absolute;
@@ -131,59 +141,64 @@ body{
                     object-fit: contain;
                 }
                 .bg{
-                    display: flex;
-                    align-items: center;
                     background-image: linear-gradient(rgba(5, 7, 12,0.80),rgba(5, 7, 12, 0.80));
+                    /* box-shadow: 0px 0px 5px 5px white; */
                     color: #fff;
                     position: relative;
                     z-index: 990;
                     padding: 4rem 4rem;
-                    /* box-shadow: 0px 0px 5px 5px white; */
-                    .contentProject__resume{
-                        width: 40%;
-                        margin: 0 auto;
-                        text-align: center;
-                        color: #fff;
-                        z-index: 995;
-                        h3{
-                            margin: 1rem 0;
-                            font-size: 3rem;
-                        }
-                        p{
-                            width: 75%;
-                            margin: 0 auto;
-                        }
-                        div{
-                            margin: 1rem 0;
-                            h4{
-                                margin: 0.5rem 0;
-                            }
-                            img{
-                                width: 50px;
-                            }
-                        }
-                    }
-                    .contentProject__images{
+                    .backgroundWidth{
                         display: flex;
                         align-items: center;
-                        gap: 1rem;
-                        width: 60%;
-                        padding: 2rem;
-                        button{
-                            background-color: transparent;
-                            border: none;
-                            img{
-                                width: 40px;
-                                filter: invert(100%);
-                                cursor: pointer;
-                                &:hover{
-                                    transform: scale(110%);
+                        max-width: 1280px;
+                        margin: 0 auto;
+                        .contentProject__resume{
+                            width: 40%;
+                            margin: 0 auto;
+                            text-align: center;
+                            color: #fff;
+                            z-index: 995;
+                            max-width: 1200px;
+                            h3{
+                                margin: 1rem 0;
+                                font-size: 3rem;
+                            }
+                            p{
+                                width: 75%;
+                                margin: 0 auto;
+                            }
+                            div{
+                                margin: 1rem 0;
+                                h4{
+                                    margin: 0.5rem 0;
+                                }
+                                img{
+                                    width: 50px;
                                 }
                             }
                         }
-                        img{
-                            width: 95%;
-                            /* box-shadow: 0 1rem 3rem rgba(black, .50); */
+                        .contentProject__images{
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            width: 60%;
+                            padding: 2rem;
+                            button{
+                                background-color: transparent;
+                                border: none;
+                                img{
+                                    width: 40px;
+                                    filter: invert(100%);
+                                    cursor: pointer;
+                                    &:hover{
+                                        transform: scale(110%);
+                                    }
+                                }
+                            }
+                            img{
+                                width: 95%;
+                                /* box-shadow: 0 1rem 3rem rgba(black, .50); */
+                            }
                         }
                     }
                 }
@@ -227,15 +242,17 @@ body{
                         height: 100%;
                     }
                     .bg{
-                        flex-direction: column; 
                         padding: 4rem 0;
-                        .contentProject__resume{
-                            width: 100%;
-                        }
-                        .contentProject__images{
-                            justify-content: center;
-                            width: 70%;
-                            padding: 2rem 0;
+                        .backgroundWidth{
+                            flex-direction: column; 
+                            .contentProject__resume{
+                                width: 100%;
+                            }
+                            .contentProject__images{
+                                justify-content: center;
+                                width: 70%;
+                                padding: 2rem 0;
+                            }
                         }
                     }
                 }
@@ -245,7 +262,7 @@ body{
     }
 
     .btn{
-        width: 150px;
+        width: 8.3rem;
     }
 
 
