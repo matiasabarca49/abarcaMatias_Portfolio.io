@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,9 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: "Inter Tight", sans-serif;
+  background-color: #e3eaee;
 }
 
 .header_social {
@@ -56,8 +59,12 @@ body {
   text-align: center;
 }
 .acercaDe__portada h1 {
-  font-size: 4rem;
+  font-size: 7rem;
+  font-weight: 700;
   color: #333333;
+}
+.acercaDe__portada h1 span {
+  color: #143a5e;
 }
 .acercaDe__portada h4 {
   opacity: 0.7;
@@ -71,10 +78,24 @@ body {
   background-color: #f8f8f8;
   padding: 2rem;
   border-radius: 40px;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  box-shadow: 0 35px 80px rgba(175, 185, 201, 0.3);
   z-index: 996;
   max-width: 1200px;
   color: #393939;
+}
+.acercaDe__resume p {
+  /* text-wrap: balance; */
+  text-align: justify;
+  margin-bottom: 10px;
+  line-height: 1.62;
+}
+
+.separatorPrimary {
+  height: 15px;
+  width: 150px;
+  background-color: rgba(51, 51, 51, 0.2);
+  margin: 30px auto;
+  border-radius: 10px;
 }
 
 .separator {
@@ -87,11 +108,15 @@ body {
   position: relative;
   z-index: 995;
   color: #393939;
+  box-shadow: 0 35px 80px rgba(128, 128, 128, 0.5);
 }
 .separator div {
   flex-grow: 1;
   height: 2px;
-  border-bottom: 2px solid #333333;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.2);
+}
+.separator div h2 {
+  color: #393939;
 }
 
 .btn {
@@ -113,7 +138,7 @@ body {
 .main h2 {
   text-align: center;
   font-size: 4rem;
-  color: #333333;
+  color: #393939;
 }
 .main__fullstack h2 {
   text-align: center;
@@ -165,6 +190,8 @@ body {
 .main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume p {
   width: 75%;
   margin: 0 auto;
+  text-align: justify;
+  line-height: 1.62;
 }
 .main__fullstack .main__fullstackProjects .contentProject .bg .backgroundWidth .contentProject__resume div {
   margin: 1rem 0;
@@ -207,10 +234,10 @@ body {
 
 @media screen and (max-width: 991px) {
   .acercaDe__portada h1 {
-    font-size: 10vw;
+    font-size: 12vw;
   }
   .acercaDe__portada h4 {
-    font-size: 4vw;
+    font-size: 3vw;
     padding: 0 0.5rem;
   }
   .acercaDe__resume {
@@ -239,6 +266,11 @@ body {
   }
   .btn {
     width: 8.3rem;
+  }
+}
+@media screen and (max-width: 567px) {
+  .main h2 {
+    font-size: 8.5vw;
   }
 }
 
