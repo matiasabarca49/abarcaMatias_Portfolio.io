@@ -1,5 +1,84 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&display=swap');
+// Variables de colores y configuración
+$primary-color: #143a5e;
+$secondary-color: #2a5a8a;
+$background-color: #E3EAEE;
+$background-light: #f8fbfc;
+$text-color: #393939;
+$white: #ffffff;
+$success-color: #28a745;
+$success-light: #20c997;
+$warning-color: #ffc107;
+$warning-light: #fd7e14;
+
+// Variables de espaciado y tamaños
+$border-radius: 20px;
+$border-radius-small: 10px;
+$border-radius-large: 12px;
+$shadow-light: 0 10px 30px rgba($primary-color, 0.1);
+$shadow-heavy: 0 20px 60px rgba($primary-color, 0.2);
+$transition-fast: 0.3s ease;
+$transition-normal: 0.4s ease;
+$transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+// Variables de breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin gradient-bg($color1, $color2, $angle: 135deg) {
+    background: linear-gradient($angle, $color1, $color2);
+}
+
+@mixin card-hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: $shadow-heavy;
+    border-color: $primary-color;
+}
+
+@mixin button-style($bg-color, $text-color, $border-color) {
+    background: $bg-color;
+    color: $text-color;
+    border: 2px solid $border-color;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: $border-radius-small;
+    text-align: center;
+    font-weight: 600;
+    transition: $transition-fast;
+    position: relative;
+    overflow: hidden;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($primary-color, 0.3);
+    }
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: $mobile) { @content; }
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: $tablet) { @content; }
+    }
+}
+
+@mixin animation-delay($delay) {
+    animation-delay: #{$delay * 0.1}s;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -301,3 +380,300 @@ body{
         }
     }
 }
+
+ // Grid de proyectos
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            padding: 0 2rem;
+            
+            @include responsive(mobile) {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 0.5rem;
+            }
+        }
+
+        // Tarjetas de proyecto
+        .project-card {
+            background: rgba($white, 0.9);
+            border-radius: $border-radius;
+            padding: 0;
+            box-shadow: $shadow-light;
+            border: 1px solid rgba($primary-color, 0.1);
+            transition: $transition-smooth;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out both;
+            
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) {
+                    @include animation-delay($i);
+                }
+            }
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                @include gradient-bg(transparent, rgba($primary-color, 0.05));
+                background: linear-gradient(90deg, transparent, rgba($primary-color, 0.05), transparent);
+                transition: left 0.6s;
+            }
+
+            &:hover {
+                @include card-hover;
+                
+                &::before {
+                    left: 100%;
+                }
+                
+                .project-image {
+                    transform: scale(1.05);
+                }
+                
+                .image-overlay {
+                    opacity: 1;
+                }
+            }
+            
+            // Imagen del proyecto
+            &__image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: $border-radius $border-radius 0 0;
+                transition: $transition-normal;
+                position: relative;
+                
+                &-container {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: $border-radius $border-radius 0 0;
+                }
+            }
+            
+            // Contenido del proyecto
+            &__content {
+                padding: 30px;
+                
+                @include responsive(mobile) {
+                    padding: 20px;
+                }
+            }
+            
+            // Header del proyecto
+            &__header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            &__icon {
+                width: 60px;
+                height: 60px;
+                @include gradient-bg($primary-color, $secondary-color);
+                border-radius: $border-radius-large;
+                @include flex-center;
+                margin-right: 20px;
+                font-size: 24px;
+                color: $white;
+                box-shadow: 0 5px 15px rgba($primary-color, 0.3);
+                transition: $transition-fast;
+                
+                &:hover {
+                    transform: scale(1.1) rotate(5deg);
+                }
+
+                &__img{
+                    width: 45px;
+                }
+            }
+            
+            &__title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: $primary-color;
+                margin-bottom: 5px;
+            }
+            
+            &__type {
+                font-size: 0.9rem;
+                color: $text-color;
+                opacity: 0.8;
+            }
+            
+            &__description {
+                color: $text-color;
+                line-height: 1.7;
+                margin-bottom: 25px;
+                font-size: 1rem;
+            }
+        }
+
+        // Overlay de imagen
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            @include gradient-bg(rgba($primary-color, 0.1), rgba($primary-color, 0.3));
+            opacity: 0;
+            transition: opacity $transition-normal;
+            border-radius: $border-radius $border-radius 0 0;
+        }
+
+        // Tecnologías
+        .project-tech {
+            margin-bottom: 25px;
+            
+            &__label {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: $primary-color;
+                margin-bottom: 10px;
+            }
+            
+            &__tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            &__tag {
+                @include gradient-bg($primary-color, $secondary-color);
+                color: $white;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 500;
+                transition: $transition-fast;
+                cursor: pointer;
+                
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 3px 10px rgba($primary-color, 0.4);
+                }
+                
+                &:active {
+                    animation: pulse 0.6s ease-in-out;
+                }
+            }
+        }
+
+        // Enlaces del proyecto
+        .project-links {
+            display: flex;
+            gap: 15px;
+            
+            @include responsive(mobile) {
+                flex-direction: column;
+            }
+        }
+
+        .project-link {
+            flex: 1;
+            
+            &--primary {
+                @include button-style($primary-color, $white, $primary-color);
+                
+                &:hover {
+                    background: $secondary-color;
+                    border-color: $secondary-color;
+                }
+            }
+            
+            &--secondary {
+                @include button-style(transparent, $primary-color, $primary-color);
+                
+                &:hover {
+                    background: $primary-color;
+                    color: $white;
+                }
+            }
+        }
+
+        // Badge de estado
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            
+            &--completed {
+                @include gradient-bg($success-color, $success-light);
+                color: $white;
+            }
+            
+            &--progress {
+                @include gradient-bg($warning-color, $warning-light);
+                color: $white;
+            }
+        }
+
+        // Animaciones
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            50% { 
+                transform: scale(1.1); 
+            }
+        }
+
+        // Funciones auxiliares
+        @function rem($pixels) {
+            @return #{$pixels / 16}rem;
+        }
+
+        // Placeholder selectors para reutilización
+        %flex-center {
+            @include flex-center;
+        }
+
+        %card-shadow {
+            box-shadow: $shadow-light;
+        }
+
+        %gradient-text {
+            background: linear-gradient(45deg, $primary-color, $secondary-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        // Estilos de utilidad
+        .text-gradient {
+            @extend %gradient-text;
+        }
+
+        .shadow-light {
+            @extend %card-shadow;
+        }
+
+        .flex-center {
+            @extend %flex-center;
+        }

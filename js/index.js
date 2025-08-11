@@ -1,98 +1,99 @@
-
-const render = (projects) =>{
+const renderProjects = (projects) =>{
     let cont;
     projects.forEach(  project => {
-        if (project.tipo === "front-end"){
+        if (project.type === "Web Front-end"){
             cont = document.getElementById("frontEndID")
         }
-        else if(project.tipo === "back-end"){
+        else if(project.type === "Web Back-end"){
             cont = document.getElementById("backEndID")
         }
         else{
             cont = document.getElementById("fullStackID")
         }
-        
         const contProject = document.createElement("div")
-        contProject.classList = "contentProject"
+        contProject.classList = "project-card"
         contProject.innerHTML = 
                                 `
-                                <img class="bg-img" src=${project.background} alt="${project.id}" id=${`bg-${project.id}`}>
-                                <div class="bg" >
-                                    <div class="backgroundWidth">
-                                        <div class="contentProject__resume">
-                                        <h3>${project.name}</h3>
-                                        <p>${project.descripcion}</p>
-                                        <div id=${`tecno${project.id}`}>
-                                            <h4>Tecnologías</h4>
+                                <div class="project-card__image-container">
+                                    <img src=${project.img[0]}  alt="E-Commerce Platform" class="project-card__image" id=${`img-${project.id}`}>
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="status-badge ${project.status === "completado" ? "status-badge--completed" : "status-badge--progress" }">${project.status}</div>
+                                <div class="project-card__content">
+                                    <div class="project-card__header">
+                                        <div class="project-card__icon"><img class="project-card__icon__img" src=${project.icon}></img></div>
+                                        <div>
+                                            <h3 class="project-card__title">${project.name}</h3>
+                                            <p class="project-card__type">Aplicación ${project.type}</p>
                                         </div>
-                                        <div id=${`access${project.id}`}> 
-                                            <a class="btn" href=${project.repositorio}> Ver Repositorio </a>
+                                    </div>
+                                    <p class="project-card__description"> ${project.description}
+                                    </p>
+                                    <div class="project-tech">
+                                        <div class="project-tech__label">Tecnologías:</div>
+                                        <div class="project-tech__tags" id=${`tech-${project.id}`}>
                                         </div>
-                                        </div>
-                                        <div class="contentProject__images">
-                                            <button style="transform: rotate(180deg)" id=${`prev${project.id}`}><img src="./img/arrow-right.png "></button>
-                                            <img src=${project.img[0]} alt="image project" id=${`img${project.id}`}>
-                                            <button id=${`next${project.id}`}><img src="./img/arrow-right.png "></button>
-                                        </div>
-                                     </div>
-                                    
+                                    </div>
+                                    <div class="project-links" id=${`access-links${project.id}`}></div>
                                 </div>
                                 `
         cont.appendChild(contProject)
-        //Renderizacion de Tecnologías
-        const tecnoCont = document.getElementById(`tecno${project.id}`)
-        project.tecnologias.forEach(  tec => {
-            const img = document.createElement('img')
-            img.style= "margin-right: 0.5rem"
-            img.src = tec
-            tecnoCont.appendChild(img)
 
-        }  )
+        //Agregar tecnologías
+
+        const contTech = document.getElementById(`tech-${project.id}`)
+        
+        project.tecnologies.forEach( tech => {
+            const span = document.createElement("span")
+            span.className = "project-tech__tag"
+            span.textContent = tech
+            contTech.appendChild(span)
+        }
+
+    )   
         //Colocar acceso a página en caso de que tenga
         if(project.page){
             const a = document.createElement('a')
-            a.innerText= "Ver página"
-            a.classList="btn"
+            a.innerText= "Ver Demo"
+            a.classList="project-link project-link--primary"
             a.href= project.page
-            const contAccess = document.getElementById(`access${project.id}`)
+            a.target = "_blank"
+            const contAccess = document.getElementById(`access-links${project.id}`)
             contAccess.appendChild(a)
         }
-        //Eventos para cambiar imagines
-        const next = document.getElementById(`next${project.id}`)
-        next.addEventListener('click', ()=>{
-          prevAndNextImg(project, "next")  
+
+        //Colocar acceso a repository en caso de que tenga
+        if(project.repository){
+            const a = document.createElement('a')
+            a.innerText= "Código"
+            a.classList="project-link project-link--secondary"
+            a.href= project.repository
+            a.target = "_blank"
+            const contAccess = document.getElementById(`access-links${project.id}`)
+            contAccess.appendChild(a)
+        }
+
+        const imgCont = document.getElementById(`img-${project.id}`)
+        let started = false
+        imgCont.addEventListener("load", ()=> {
+            if(!started){
+                started = true
+                let i = 0
+                setInterval(()=> {
+                   imgCont.src = project.img[i]
+                   i = (i + 1) % project.img.length
+                
+                }, Math.random() * (12000 - 8000) + 8000, i)
+            }
         })
-        const prev = document.getElementById(`prev${project.id}`)
-        prev.addEventListener('click', ()=>{
-          prevAndNextImg(project, "prev")
-        })
+
     })
 }
-
-const prevAndNextImg = (project, way) =>{
-    const imgs = project.img
-    const elementIMG = document.getElementById(`img${project.id}`)
-    const bg = document.getElementById(`bg-${project.id}`)
-    //Cambiar por  slice(3,7)
-    const currentImg = `./${elementIMG.src.split("/").slice(4,8).join("/")}`
-    let indexImgCurrent = imgs.indexOf(currentImg)
-    if (way === "next"){
-        indexImgCurrent = indexImgCurrent++ === imgs.length-1 ?   0  : indexImgCurrent++
-        elementIMG.src = imgs[indexImgCurrent]
-        bg.src = imgs[indexImgCurrent]
-    }
-    else{
-        indexImgCurrent = indexImgCurrent-- <= 0 ?  imgs.length-1   : indexImgCurrent--
-        elementIMG.src = imgs[indexImgCurrent]
-        bg.src = imgs[indexImgCurrent]
-    }
-   
-} 
-
+ 
 //Algoritmo Principal
 
 fetch("./data/projects.json")
     .then(res => res.json())
     .then( data => {
-        render(data)
+        renderProjects(data)
     } )
