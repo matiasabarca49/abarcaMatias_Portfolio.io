@@ -18,7 +18,7 @@ const renderProjects = (projects) =>{
                                     <img src=${project.img[0]}  alt="E-Commerce Platform" class="project-card__image" id=${`img-${project.id}`}>
                                     <div class="image-overlay"></div>
                                 </div>
-                                <div class="status-badge ${project.status === "completado" ? "status-badge--completed" : "status-badge--progress" }">${project.status}</div>
+                                <div class="status-badge ${project.status === "Finalizado" ? "status-badge--completed" : "status-badge--progress" }">${project.status}</div>
                                 <div class="project-card__content">
                                     <div class="project-card__header">
                                         <div class="project-card__icon"><img class="project-card__icon__img" src=${project.icon}></img></div>
