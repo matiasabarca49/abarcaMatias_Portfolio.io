@@ -15,7 +15,7 @@ const renderProjects = (projects) =>{
         contProject.innerHTML = 
                                 `
                                 <div class="project-card__image-container">
-                                    <img src=${project.img[0]}  alt="E-Commerce Platform" class="project-card__image" id=${`img-${project.id}`}>
+                                    <img src=${project.img[0]}  alt="E-Commerce Platform" class="project-card__image" id=${`img-${project.id}`} loading="lazy" decoding="async">
                                     <div class="image-overlay"></div>
                                 </div>
                                 <div class="status-badge ${project.status === "Finalizado" ? "status-badge--completed" : "status-badge--progress" }">${project.status}</div>
@@ -83,7 +83,7 @@ const renderProjects = (projects) =>{
                    imgCont.src = project.img[i]
                    i = (i + 1) % project.img.length
                 
-                }, Math.random() * (12000 - 8000) + 8000, i)
+                }, Math.random() * (4000 - 2000) + 2000, i)
             }
         })
 

@@ -127,6 +127,10 @@ body{
     }
 }
 
+.footer{
+    margin-top: 2rem;
+}
+
 .acercaDe{
     display: flex;
     flex-direction: column;
@@ -168,6 +172,99 @@ body{
             line-height: 1.62;
         }
     }
+}
+
+.tech-section {
+    padding: 3rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    &__heading {
+        text-align: center;
+        margin-bottom: 2.5rem;
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: $text-color;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+        }
+
+        p {
+            color: $text-color;
+            opacity: 0.6;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+    }
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    @include responsive(mobile) {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+.tech-card {
+    background: rgba($white, 0.9);
+    border-radius: $border-radius;
+    padding: 1.5rem;
+    border: 1px solid rgba($primary-color, 0.1);
+    box-shadow: $shadow-light;
+    transition: $transition-smooth;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1.2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba($primary-color, 0.1);
+    }
+
+    &__icon {
+        width: 44px;
+        height: 44px;
+        @include gradient-bg($primary-color, $secondary-color);
+        border-radius: $border-radius-large;
+        @include flex-center;
+        flex-shrink: 0;
+
+        img {
+            width: 22px;
+            filter: invert(100%);
+        }
+    }
+
+    &__title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $text-color;
+        letter-spacing: 0.01em;
+    }
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    @include gradient-bg($primary-color, $secondary-color);
+    color: $white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: default;
+    transition: $transition-fast;
 }
 
 .separatorPrimary{
@@ -472,6 +569,7 @@ body{
                 display: flex;
                 align-items: center;
                 margin-bottom: 20px;
+                min-height: 80px;
             }
             
             &__icon {
@@ -485,10 +583,6 @@ body{
                 color: $white;
                 box-shadow: 0 5px 15px rgba($primary-color, 0.3);
                 transition: $transition-fast;
-                
-                &:hover {
-                    transform: scale(1.1) rotate(5deg);
-                }
 
                 &__img{
                     width: 45px;
@@ -513,6 +607,7 @@ body{
                 line-height: 1.7;
                 margin-bottom: 25px;
                 font-size: 1rem;
+                min-height: 150px;
             }
         }
 
@@ -554,16 +649,8 @@ body{
                 font-size: 0.8rem;
                 font-weight: 500;
                 transition: $transition-fast;
-                cursor: pointer;
+                cursor: default;
                 
-                &:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 3px 10px rgba($primary-color, 0.4);
-                }
-                
-                &:active {
-                    animation: pulse 0.6s ease-in-out;
-                }
             }
         }
 
