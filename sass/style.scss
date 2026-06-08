@@ -5,6 +5,8 @@ $primary-color: #143a5e;
 $secondary-color: #2a5a8a;
 $background-color: #E3EAEE;
 $background-light: #f8fbfc;
+$bg1: rgba(20, 58, 94, 0.6);
+$bg2: rgba(42, 90, 138, 0.7);
 $text-color: #393939;
 $white: #ffffff;
 $success-color: #28a745;
@@ -257,7 +259,7 @@ body{
 }
 
 .tech-tag {
-    @include gradient-bg($primary-color, $secondary-color);
+    @include gradient-bg($bg1, $bg2);
     color: $white;
     padding: 5px 12px;
     border-radius: 20px;
@@ -642,7 +644,7 @@ body{
             }
             
             &__tag {
-                @include gradient-bg($primary-color, $secondary-color);
+                @include gradient-bg($bg1, $bg2);
                 color: $white;
                 padding: 6px 12px;
                 border-radius: 20px;

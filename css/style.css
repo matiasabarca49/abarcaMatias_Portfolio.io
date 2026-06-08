@@ -173,7 +173,7 @@ body {
 }
 
 .tech-tag {
-  background: linear-gradient(135deg, #143a5e, #2a5a8a);
+  background: linear-gradient(135deg, rgba(20, 58, 94, 0.6), rgba(42, 90, 138, 0.7));
   color: #ffffff;
   padding: 5px 12px;
   border-radius: 20px;
@@ -519,7 +519,7 @@ body {
   gap: 8px;
 }
 .project-tech__tag {
-  background: linear-gradient(135deg, #143a5e, #2a5a8a);
+  background: linear-gradient(135deg, rgba(20, 58, 94, 0.6), rgba(42, 90, 138, 0.7));
   color: #ffffff;
   padding: 6px 12px;
   border-radius: 20px;
