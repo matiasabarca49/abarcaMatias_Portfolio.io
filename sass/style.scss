@@ -609,7 +609,7 @@ body{
                 line-height: 1.7;
                 margin-bottom: 25px;
                 font-size: 1rem;
-                min-height: 150px;
+                min-height: 170px;
             }
         }
 
@@ -629,6 +629,7 @@ body{
         // Tecnologías
         .project-tech {
             margin-bottom: 25px;
+            min-height: 125px;
             
             &__label {
                 font-size: 0.9rem;
